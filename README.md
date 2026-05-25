@@ -28,17 +28,12 @@ assets/css/         Stylesheet
 assets/js/          Flip-book content & init
 ```
 
-## Replacing the Chalisa placeholders with Vani's real pages
+## Chalisa pages
 
-The flip-book currently shows the traditional Hanuman Chalisa text in
-Devanagari on each page, with a small note that Vani's hand-written version
-will replace it. To swap in her real pages, you have two options:
-
-1. **Photographs of each page** — save them as `assets/chalisa/page-01.jpg`,
-   `page-02.jpg`, ... and we'll update `assets/js/chalisa.js` to render an
-   `<img>` per verse.
-2. **A single PDF** — drop it at `assets/chalisa/vani-chalisa.pdf` and we'll
-   render each PDF page as a flip-book page using `pdf.js`.
+Photos of each page of Vani's hand-written notebook live in
+`assets/chalisa/` (named `image00.jpeg` through `image45.jpeg`). The list
+loaded into the flip-book is hard-coded in `assets/js/chalisa.js` — to
+add, remove, or re-order pages, edit the `PAGES` array there.
 
 ## Local preview
 

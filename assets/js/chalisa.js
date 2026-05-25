@@ -1,135 +1,79 @@
-/* Hanuman Chalisa — flip book content & init */
+/* Hanuman Chalisa — flip book of Vani's hand-written pages */
 
-const DOHAS_OPENING = [
-  {
-    label: "Opening Doha I",
-    text:
-      "श्रीगुरु चरन सरोज रज, निज मनु मुकुरु सुधारि।\n" +
-      "बरनउँ रघुबर बिमल जसु, जो दायकु फल चारि॥",
-  },
-  {
-    label: "Opening Doha II",
-    text:
-      "बुद्धिहीन तनु जानिके, सुमिरौं पवनकुमार।\n" +
-      "बल बुद्धि बिद्या देहु मोहिं, हरहु कलेस बिकार॥",
-  },
+// All 45 uploaded pages, in numerical order.
+// image05 was not in the upload — left out for now.
+const PAGES = [
+  { src: "assets/chalisa/image00.jpeg", label: "Cover" },
+  { src: "assets/chalisa/image01.jpeg", label: "Opening Doha I" },
+  { src: "assets/chalisa/image02.jpeg", label: "Opening Doha II" },
+  { src: "assets/chalisa/image03.jpeg", label: "Chaupai 1" },
+  { src: "assets/chalisa/image04.jpeg", label: "Chaupai 2" },
+  { src: "assets/chalisa/image06.jpeg", label: "" },
+  { src: "assets/chalisa/image07.jpeg", label: "" },
+  { src: "assets/chalisa/image08.jpeg", label: "" },
+  { src: "assets/chalisa/image09.jpeg", label: "" },
+  { src: "assets/chalisa/image10.jpeg", label: "" },
+  { src: "assets/chalisa/image11.jpeg", label: "" },
+  { src: "assets/chalisa/image12.jpeg", label: "" },
+  { src: "assets/chalisa/image13.jpeg", label: "" },
+  { src: "assets/chalisa/image14.jpeg", label: "" },
+  { src: "assets/chalisa/image15.jpeg", label: "" },
+  { src: "assets/chalisa/image16.jpeg", label: "" },
+  { src: "assets/chalisa/image17.jpeg", label: "" },
+  { src: "assets/chalisa/image18.jpeg", label: "" },
+  { src: "assets/chalisa/image19.jpeg", label: "" },
+  { src: "assets/chalisa/image20.jpeg", label: "" },
+  { src: "assets/chalisa/image21.jpeg", label: "" },
+  { src: "assets/chalisa/image22.jpeg", label: "" },
+  { src: "assets/chalisa/image23.jpeg", label: "" },
+  { src: "assets/chalisa/image24.jpeg", label: "" },
+  { src: "assets/chalisa/image25.jpeg", label: "" },
+  { src: "assets/chalisa/image26.jpeg", label: "" },
+  { src: "assets/chalisa/image27.jpeg", label: "" },
+  { src: "assets/chalisa/image28.jpeg", label: "" },
+  { src: "assets/chalisa/image29.jpeg", label: "" },
+  { src: "assets/chalisa/image30.jpeg", label: "" },
+  { src: "assets/chalisa/image31.jpeg", label: "" },
+  { src: "assets/chalisa/image32.jpeg", label: "" },
+  { src: "assets/chalisa/image33.jpeg", label: "" },
+  { src: "assets/chalisa/image34.jpeg", label: "" },
+  { src: "assets/chalisa/image35.jpeg", label: "" },
+  { src: "assets/chalisa/image36.jpeg", label: "" },
+  { src: "assets/chalisa/image37.jpeg", label: "" },
+  { src: "assets/chalisa/image38.jpeg", label: "" },
+  { src: "assets/chalisa/image39.jpeg", label: "" },
+  { src: "assets/chalisa/image40.jpeg", label: "" },
+  { src: "assets/chalisa/image41.jpeg", label: "" },
+  { src: "assets/chalisa/image42.jpeg", label: "Chaupai 39" },
+  { src: "assets/chalisa/image43.jpeg", label: "Chaupai 40" },
+  { src: "assets/chalisa/image44.jpeg", label: "Closing Doha" },
+  { src: "assets/chalisa/image45.jpeg", label: "Jai Mantra" },
 ];
 
-const CHAUPAIS = [
-  "जय हनुमान ज्ञान गुन सागर।\nजय कपीस तिहुँ लोक उजागर॥",
-  "राम दूत अतुलित बल धामा।\nअंजनि पुत्र पवनसुत नामा॥",
-  "महाबीर बिक्रम बजरंगी।\nकुमति निवार सुमति के संगी॥",
-  "कंचन बरन बिराज सुबेसा।\nकानन कुंडल कुंचित केसा॥",
-  "हाथ बज्र औ ध्वजा बिराजै।\nकाँधे मूँज जनेऊ साजै॥",
-  "शंकर सुवन केसरीनंदन।\nतेज प्रताप महा जग बंदन॥",
-  "विद्यावान गुनी अति चातुर।\nराम काज करिबे को आतुर॥",
-  "प्रभु चरित्र सुनिबे को रसिया।\nराम लखन सीता मन बसिया॥",
-  "सूक्ष्म रूप धरि सियहिं दिखावा।\nबिकट रूप धरि लंक जरावा॥",
-  "भीम रूप धरि असुर सँहारे।\nरामचंद्र के काज सँवारे॥",
-  "लाय सजीवन लखन जियाये।\nश्रीरघुबीर हरषि उर लाये॥",
-  "रघुपति कीन्ही बहुत बड़ाई।\nतुम मम प्रिय भरतहि सम भाई॥",
-  "सहस बदन तुम्हरो जस गावैं।\nअस कहि श्रीपति कंठ लगावैं॥",
-  "सनकादिक ब्रह्मादि मुनीसा।\nनारद सारद सहित अहीसा॥",
-  "जम कुबेर दिगपाल जहाँ ते।\nकबि कोबिद कहि सकैं कहाँ ते॥",
-  "तुम उपकार सुग्रीवहिं कीन्हा।\nराम मिलाय राज पद दीन्हा॥",
-  "तुम्हरो मंत्र बिभीषन माना।\nलंकेस्वर भए सब जग जाना॥",
-  "जुग सहस्र जोजन पर भानू।\nलील्यो ताहि मधुर फल जानू॥",
-  "प्रभु मुद्रिका मेलि मुख माहीं।\nजलधि लाँघि गये अचरज नाहीं॥",
-  "दुर्गम काज जगत के जेते।\nसुगम अनुग्रह तुम्हरे तेते॥",
-  "राम दुआरे तुम रखवारे।\nहोत न आज्ञा बिनु पैसारे॥",
-  "सब सुख लहै तुम्हारी सरना।\nतुम रच्छक काहू को डर ना॥",
-  "आपन तेज सम्हारो आपै।\nतीनों लोक हाँक तें काँपै॥",
-  "भूत पिसाच निकट नहिं आवै।\nमहाबीर जब नाम सुनावै॥",
-  "नासै रोग हरै सब पीरा।\nजपत निरंतर हनुमत बीरा॥",
-  "संकट तें हनुमान छुड़ावै।\nमन क्रम बचन ध्यान जो लावै॥",
-  "सब पर राम तपस्वी राजा।\nतिन के काज सकल तुम साजा॥",
-  "और मनोरथ जो कोई लावै।\nसोइ अमित जीवन फल पावै॥",
-  "चारों जुग परताप तुम्हारा।\nहै परसिद्ध जगत उजियारा॥",
-  "साधु संत के तुम रखवारे।\nअसुर निकंदन राम दुलारे॥",
-  "अष्टसिद्धि नौ निधि के दाता।\nअस बर दीन जानकी माता॥",
-  "राम रसायन तुम्हरे पासा।\nसदा रहो रघुपति के दासा॥",
-  "तुम्हरे भजन राम को पावै।\nजनम जनम के दुख बिसरावै॥",
-  "अंत काल रघुबर पुर जाई।\nजहाँ जन्म हरि भक्त कहाई॥",
-  "और देवता चित्त न धरई।\nहनुमत सेइ सर्ब सुख करई॥",
-  "संकट कटै मिटै सब पीरा।\nजो सुमिरै हनुमत बलबीरा॥",
-  "जय जय जय हनुमान गोसाईं।\nकृपा करहु गुरुदेव की नाईं॥",
-  "जो सत बार पाठ कर कोई।\nछूटहि बंदि महा सुख होई॥",
-  "जो यह पढ़ै हनुमान चालीसा।\nहोय सिद्धि साखी गौरीसा॥",
-  "तुलसीदास सदा हरि चेरा।\nकीजै नाथ हृदय महँ डेरा॥",
-];
-
-const DOHA_CLOSING = {
-  label: "Closing Doha",
-  text:
-    "पवनतनय संकट हरन, मंगल मूरति रूप।\n" +
-    "राम लखन सीता सहित, हृदय बसहु सुर भूप॥",
-};
-
-function buildPages() {
-  const pages = [];
-
-  // Cover
-  pages.push(`
-    <div class="book-page cover">
-      <div class="ornament">॥ श्री हनुमते नमः ॥</div>
-      <div class="cover-devanagari">हनुमान चालीसा</div>
-      <div class="cover-title">Hanuman Chalisa</div>
-      <div class="cover-sub">A keepsake from Bal Vihar</div>
-      <div class="cover-sub">copied lovingly at age six</div>
-      <div class="cover-credit">— by Vani —</div>
-    </div>`);
-
-  // Opening dohas
-  DOHAS_OPENING.forEach((doha, i) => {
-    pages.push(renderVerse(doha.label, doha.text, `Page ${i + 1}`));
-  });
-
-  // 40 chaupais
-  CHAUPAIS.forEach((text, i) => {
-    const num = i + 1;
-    pages.push(renderVerse(`Chaupai ${num}`, text, `Page ${num + 2}`));
-  });
-
-  // Closing doha
-  pages.push(renderVerse(DOHA_CLOSING.label, DOHA_CLOSING.text, `Page 43`));
-
-  // Back cover
-  pages.push(`
-    <div class="book-page back-cover">
-      <div class="ornament">❖</div>
-      <div class="cover-title">Iti</div>
-      <div class="cover-sub">May goodness, courage and joy</div>
-      <div class="cover-sub">find their way to her always.</div>
-      <div class="cover-credit">Creations of Vani</div>
-    </div>`);
-
-  return pages;
-}
-
-function renderVerse(label, text, pageNum) {
+function renderPage(page, isCover) {
+  const cls = isCover ? "book-page image-page cover-image" : "book-page image-page";
+  const label = page.label ? `<div class="image-page-label">${page.label}</div>` : "";
   return `
-    <div class="book-page">
-      <div class="verse-label">${label}</div>
-      <div class="verse-devanagari">${text}</div>
-      <div class="verse-placeholder">Vani&rsquo;s hand&#8209;written page will appear here soon.</div>
-      <div class="page-number">${pageNum}</div>
+    <div class="${cls}">
+      <img src="${page.src}" alt="${page.label || "Page from Vani's Hanuman Chalisa"}" loading="lazy" />
+      ${label}
     </div>`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const bookEl = document.getElementById("chalisa-book");
-  const pages = buildPages();
-  bookEl.innerHTML = pages.join("");
+  const html = PAGES.map((p, i) => renderPage(p, i === 0)).join("");
+  bookEl.innerHTML = html;
 
   const pageFlip = new St.PageFlip(bookEl, {
-    width: 420,
-    height: 580,
+    width: 480,
+    height: 360,
     size: "stretch",
-    minWidth: 300,
-    maxWidth: 520,
-    minHeight: 420,
-    maxHeight: 720,
-    maxShadowOpacity: 0.4,
+    minWidth: 280,
+    maxWidth: 640,
+    minHeight: 210,
+    maxHeight: 480,
+    maxShadowOpacity: 0.45,
     showCover: true,
     mobileScrollSupport: true,
     drawShadow: true,
