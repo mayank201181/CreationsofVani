@@ -1,0 +1,455 @@
+/* ============================================================
+   Creations of Vani — warm & traditional theme
+   ============================================================ */
+
+:root {
+  --cream: #fdf6e8;
+  --cream-deep: #f6e9c9;
+  --parchment: #f3e3bf;
+  --saffron: #c2410c;
+  --saffron-light: #ea7c2f;
+  --maroon: #7c2d12;
+  --gold: #b08431;
+  --gold-light: #d4a847;
+  --ink: #3f2912;
+  --ink-soft: #6b4423;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Lora', 'Georgia', serif;
+  line-height: 1.65;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top, #fff6dc 0%, var(--cream) 45%, var(--cream-deep) 100%);
+  min-height: 100vh;
+}
+
+.page-border {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  position: relative;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  text-align: center;
+  padding: 2rem 0 2.5rem;
+  position: relative;
+}
+
+.ornament {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  color: var(--gold);
+  letter-spacing: 0.25em;
+  font-size: 1rem;
+  margin: 0.75rem 0;
+}
+
+.ornament.top { font-size: 1.1rem; }
+
+.site-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  color: var(--maroon);
+  margin: 0.25rem 0;
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.site-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--ink-soft);
+  margin: 0.25rem 0 0;
+}
+
+/* ---------- Intro ---------- */
+
+.intro {
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+
+.intro em {
+  color: var(--maroon);
+  font-style: italic;
+}
+
+/* ---------- Cards ---------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #fffaee 0%, var(--parchment) 100%);
+  border: 1px solid rgba(176, 132, 49, 0.35);
+  border-radius: 8px;
+  padding: 1.5rem 1.5rem 1.75rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 4px 14px rgba(124, 45, 18, 0.06);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 10px 24px rgba(124, 45, 18, 0.14);
+}
+
+.card.featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(180deg, #fff5d8 0%, #f4dc99 100%);
+  border-color: rgba(176, 132, 49, 0.55);
+}
+
+.card-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  background: var(--maroon);
+  color: #fff5d8;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+}
+
+.card-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  background: radial-gradient(circle at 50% 40%, #fff5d8 0%, #e9c97a 100%);
+  border: 1px solid rgba(176, 132, 49, 0.3);
+}
+
+.card.featured .card-art {
+  height: 180px;
+  background:
+    radial-gradient(circle at 50% 35%, #fff5d8 0%, #d4a847 60%, #b08431 100%);
+}
+
+.art-glyph {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 3.5rem;
+  color: var(--maroon);
+  text-shadow: 0 2px 0 rgba(255, 245, 216, 0.7);
+}
+
+.card.featured .art-glyph { font-size: 5rem; }
+
+.card h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  color: var(--maroon);
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  flex: 1;
+}
+
+.card-cta {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--saffron);
+  text-transform: uppercase;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  margin-top: 4rem;
+  text-align: center;
+  color: var(--ink-soft);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+
+.site-footer p { margin: 0.25rem 0; }
+
+/* ---------- Section pages (chalisa, art, writing) ---------- */
+
+.section-nav {
+  margin-bottom: 1.5rem;
+}
+
+.section-nav a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--saffron);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.section-nav a:hover { color: var(--maroon); }
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: var(--maroon);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  letter-spacing: 0.05em;
+  margin: 0.5rem 0;
+}
+
+.section-header .devanagari {
+  font-family: 'Noto Serif Devanagari', serif;
+  color: var(--saffron);
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin: 0.25rem 0;
+}
+
+.section-header p {
+  color: var(--ink-soft);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  max-width: 640px;
+  margin: 0.5rem auto 0;
+}
+
+/* ---------- Flip book ---------- */
+
+.book-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+.book-shell {
+  width: 100%;
+  max-width: 980px;
+  background:
+    radial-gradient(ellipse at center, rgba(124, 45, 18, 0.12) 0%, transparent 70%);
+  padding: 1rem;
+}
+
+#chalisa-book {
+  margin: 0 auto;
+}
+
+.book-page {
+  background:
+    linear-gradient(180deg, #fffaee 0%, #f3e3bf 100%);
+  color: var(--ink);
+  padding: 2rem 1.75rem;
+  border: 1px solid rgba(176, 132, 49, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.book-page::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(176, 132, 49, 0.25);
+  pointer-events: none;
+}
+
+.book-page.cover {
+  background:
+    radial-gradient(circle at 50% 30%, #f4dc99 0%, #c2410c 90%);
+  color: #fff5d8;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-page.cover::before { border-color: rgba(255, 245, 216, 0.4); }
+
+.book-page.back-cover {
+  background: linear-gradient(180deg, #7c2d12 0%, #4a1a0a 100%);
+  color: #fff5d8;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-page.back-cover::before { border-color: rgba(255, 245, 216, 0.3); }
+
+.cover-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.9rem;
+  letter-spacing: 0.08em;
+  margin: 0.5rem 0;
+}
+
+.cover-devanagari {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 2.4rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.cover-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  margin: 0.25rem 0;
+  opacity: 0.9;
+}
+
+.cover-credit {
+  margin-top: 2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  opacity: 0.85;
+}
+
+.verse-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--saffron);
+  text-align: center;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.verse-devanagari {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.35rem;
+  line-height: 2;
+  text-align: center;
+  color: var(--maroon);
+  margin: auto 0;
+  white-space: pre-line;
+}
+
+.verse-placeholder {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  opacity: 0.75;
+}
+
+.page-number {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+
+/* Smaller text on smaller screens */
+@media (max-width: 640px) {
+  .verse-devanagari { font-size: 1.1rem; line-height: 1.9; }
+  .cover-devanagari { font-size: 1.8rem; }
+  .cover-title { font-size: 1.4rem; }
+  .book-page { padding: 1.25rem 1rem; }
+}
+
+.book-help {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.book-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.book-controls button {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  background: var(--cream);
+  color: var(--maroon);
+  border: 1px solid rgba(176, 132, 49, 0.5);
+  padding: 0.55rem 1.1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.book-controls button:hover {
+  background: var(--maroon);
+  color: var(--cream);
+}
+
+/* ---------- Empty section placeholders ---------- */
+
+.empty-state {
+  max-width: 640px;
+  margin: 3rem auto;
+  text-align: center;
+  padding: 2.5rem 1.75rem;
+  background: linear-gradient(180deg, #fffaee 0%, var(--parchment) 100%);
+  border: 1px solid rgba(176, 132, 49, 0.35);
+  border-radius: 8px;
+}
+
+.empty-state .glyph {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 3rem;
+  color: var(--gold);
+}
+
+.empty-state h2 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--maroon);
+  font-size: 1.6rem;
+  margin: 0.5rem 0;
+}
+
+.empty-state p {
+  color: var(--ink-soft);
+  margin: 0.5rem 0;
+}
