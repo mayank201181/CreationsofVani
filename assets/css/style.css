@@ -494,3 +494,69 @@ body {
   color: var(--ink-soft);
   margin: 0.5rem 0;
 }
+
+/* ---------- Art gallery ---------- */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.artwork {
+  margin: 0;
+  background: linear-gradient(180deg, #fffaee 0%, var(--parchment) 100%);
+  border: 1px solid rgba(176, 132, 49, 0.35);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 4px 14px rgba(124, 45, 18, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.artwork:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 10px 24px rgba(124, 45, 18, 0.14);
+}
+
+.artwork a {
+  display: block;
+  background: #2b1208;
+  line-height: 0;
+}
+
+.artwork img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.artwork figcaption {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.artwork h3 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--maroon);
+  margin: 0 0 0.25rem;
+  font-size: 1.3rem;
+}
+
+.artwork .medium {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.artwork .year {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin: 0.5rem 0 0;
+}
