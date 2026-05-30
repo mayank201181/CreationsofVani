@@ -1,12 +1,12 @@
 /* Vani's art gallery — add a new entry to ARTWORKS to publish a new piece. */
 
 const ARTWORKS = [
-  // {
-  //   src: "assets/art/guitar.jpeg",
-  //   title: "Acoustic Guitar",
-  //   medium: "Acrylic on canvas",
-  //   year: "2026",
-  // },
+  {
+    src: "assets/art/guitar.jpeg",
+    title: "Acoustic Guitar",
+    medium: "Acrylic on canvas",
+    year: "2026",
+  },
 ];
 
 function render() {
